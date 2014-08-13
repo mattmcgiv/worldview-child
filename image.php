@@ -65,11 +65,11 @@ if ( ! isset( $content_width ) )
 							echo wp_get_attachment_image( $post->ID, $attachment_size );
 							?></a>
 
-							<?php if ( ! empty( $post->post_excerpt ) ) : ?>
-							<div class="entry-caption">
+							<?php //if ( ! empty( $post->post_excerpt ) ) : ?>
+							<!-- <div class="entry-caption">
 								<?php the_excerpt(); ?>
-							</div>
-							<?php endif; ?>
+							</div> -->
+							<?php //endif; ?>
 						</div><!-- .attachment -->
 
 					</div><!-- .entry-attachment -->
