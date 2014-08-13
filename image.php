@@ -82,6 +82,13 @@ if ( ! isset( $content_width ) )
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 					</header><!-- .entry-header -->
 
+					
+
+					<div class="entry-description">
+						<?php the_content(); ?>
+						<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'worldview' ), 'after' => '</div>' ) ); ?>
+					</div><!-- .entry-description -->
+
 					<footer class="entry-meta">
 						<?php
 							$metadata = wp_get_attachment_metadata();
@@ -99,11 +106,6 @@ if ( ! isset( $content_width ) )
 						?>
 						<?php edit_post_link( __( 'Edit', 'worldview' ), '<span class="edit-link">', '</span>' ); ?>
 					</footer><!-- .entry-meta -->
-
-					<div class="entry-description">
-						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'worldview' ), 'after' => '</div>' ) ); ?>
-					</div><!-- .entry-description -->
 
 					<?php comments_template(); ?>
 
