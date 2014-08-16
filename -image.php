@@ -65,11 +65,11 @@ if ( ! isset( $content_width ) )
 							echo wp_get_attachment_image( $post->ID, $attachment_size );
 							?></a>
 
-							<?php //if ( ! empty( $post->post_excerpt ) ) : ?>
-							<!-- <div class="entry-caption">
+							<?php if ( ! empty( $post->post_excerpt ) ) : ?>
+							<div class="entry-caption">
 								<?php the_excerpt(); ?>
-							</div> -->
-							<?php //endif; ?>
+							</div>
+							<?php endif; ?>
 						</div><!-- .attachment -->
 
 					</div><!-- .entry-attachment -->
@@ -82,20 +82,10 @@ if ( ! isset( $content_width ) )
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 					</header><!-- .entry-header -->
 
-					<p></p>
-
-					<div class="entry-description">
-						
-						<?php the_content(); ?>
-
-						<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'worldview' ), 'after' => '</div>' ) ); ?>
-					</div><!-- .entry-description -->
-
-					<footer class="entry-meta" style="margin-top: 30px;">
+					<footer class="entry-meta">
 						<?php
 							$metadata = wp_get_attachment_metadata();
-							echo '<p>To see the original picture <a href="'.esc_url(wp_get_attachment_url()).'" target="_blank">click here</a>. To return to the album <a href="'.esc_url(get_permalink($post->post_parent )).'">click here</a>.';
-							/*printf( __( '<span class="meta-prep meta-prep-entry-date">Published </span> <span class="entry-date"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span> at <a href="%3$s" title="Link to full-size image">%4$s &times; %5$s</a> in <a href="%6$s" title="Return to %7$s" rel="gallery">%8$s</a>.', 'worldview' ),
+							printf( __( '<span class="meta-prep meta-prep-entry-date">Click to see the original: </span> <span class="entry-date"></span> <a href="%3$s" title="Link to full-size image">%4$s &times; %5$s</a>. Return to: <a href="%6$s" title="Return to %7$s" rel="gallery">%8$s</a>.', 'worldview' ),
 								esc_attr( get_the_date( 'c' ) ),
 								esc_html( get_the_date() ),
 								esc_url( wp_get_attachment_url() ),
@@ -104,14 +94,16 @@ if ( ! isset( $content_width ) )
 								esc_url( get_permalink( $post->post_parent ) ),
 								esc_attr( strip_tags( get_the_title( $post->post_parent ) ) ),
 								get_the_title( $post->post_parent )
-							);*/
+							);
 						?>
 						<?php edit_post_link( __( 'Edit', 'worldview' ), '<span class="edit-link">', '</span>' ); ?>
-					</p></footer><!-- .entry-meta -->
-					<div class="" style="">
-						<span class="previous-image"><p><?php previous_image_link( false, __( '&larr; Previous', 'worldview' ) ); ?></span>
-						<span class="next-image"><?php next_image_link( false, __( 'Next &rarr;', 'worldview' ) ); ?></span>
-					</div>
+					</footer><!-- .entry-meta -->
+
+					<div class="entry-description">
+						<?php the_content(); ?>
+						<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'worldview' ), 'after' => '</div>' ) ); ?>
+					</div><!-- .entry-description -->
+
 					<?php comments_template(); ?>
 
 				</div><!-- .post-wrapper -->
