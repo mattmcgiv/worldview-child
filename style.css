@@ -12,3 +12,7 @@ widget.widget_pages {
 }
 
 article.post .split-view, article.page .split-view { padding-top: 0px; margin-top: -20px;}
+
+#image-post-wrapper {
+	padding-left: 40px;
+}

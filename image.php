@@ -76,7 +76,7 @@ if ( ! isset( $content_width ) )
 
 				</div><!-- .entry-content -->
 
-				<div class="post-wrapper">
+				<div class="post-wrapper" id="image-post-wrapper">
 
 					<header class="entry-header">
 						<h1 class="entry-title"><?php the_title(); ?></h1>
