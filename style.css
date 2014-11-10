@@ -6,6 +6,9 @@
 
 @import url("../worldview/style.css");
 
+widget.widget_pages {
+	display: none !important;
+	visibility: hidden;
+}
 
-/*main a { color: blue !important; text-decoration: none !important; }*/
-
+article.post .split-view, article.page .split-view { padding-top: 0px; margin-top: -20px;}

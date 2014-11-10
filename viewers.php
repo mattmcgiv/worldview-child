@@ -24,7 +24,7 @@
 		<?php
 			if(isset($_GET['referrer'])) {
 					$queryURL = $_GET["referrer"];
-					echo '<!--set queryURL to '.$queryURL.'--><br>';
+					echo '<!--set queryURL to '.$queryURL.'-->';
 			}
 		?>
 		<?php getUserActivity($queryURL); ?>
@@ -34,7 +34,7 @@
 
 <?php
 	function getUserActivity($queryURL) {	
-			echo '<!--in getUserActivity function: '.$queryURL.'--><br>';
+			echo '<!--in getUserActivity function: '.$queryURL.'-->';
 			if (strlen($queryURL)>55) {
 				//$queryURL=substr($queryURL, 0, 55);
 			}
@@ -73,7 +73,7 @@
 		
 		//Access WP DB
 		global $wpdb;
-		echo '<!--in doQuery function: '.$queryURL.'--><br>';
+		echo '<!--in doQuery function: '.$queryURL.'-->';
 		
 		$memberActivity = $wpdb->get_results( 
 				"

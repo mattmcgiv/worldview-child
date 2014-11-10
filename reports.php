@@ -1,12 +1,8 @@
 <?php
 /**
- * The page template file.
- *
- * This is the template file for generic pages in WordPress.
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
- * @package worldview
- */
+ * Template Name: Reports (Custom)
+ * Author:  Matt McGivney (http://antym.com)
+*/
 ?>
 
 <?php add_action('wp_head','hook_css_right_sidebar'); ?>
@@ -23,25 +19,20 @@
 
 <?php get_header(); ?>
 
+
+
+
+
 	<section id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-		<?php global $post;?>
-
-		<?php
-		// Make sure the post has a gallery in it
-		if(has_shortcode($post->post_content,'gallery')) {
-			$mvmem_gallery_array = explode(',',mvmem_get_gallery_ids());
-		} 
-		?>	
 		<?php if( have_posts() ): while( have_posts() ): the_post(); ?>
 		
-
-			<?php get_template_part( 'content', 'page' ); ?>
+		<?php get_template_part( 'content', 'page' ); ?>
+		<?php echo $html;?>
 
 		<?php endwhile; endif; ?>
-
-
+			
 
 		</main><!-- #main -->
 		
@@ -53,8 +44,8 @@
 						<div id="text-6" class="widget widget_text">
 								<div id="member-activity-container">
 									<div class="first-line">
-										<span style="text-align: center; font-size: 20px;">
-											<a href="http://mvmem.com/whats-new" title="See what's new on the site">What's New</a>
+										<span style="text-align: center; font-size: 20px">
+											<a href="http://mvmem.com/announcements" title="See what's new on the site">What's New</a>
 										</span>
 									</div>
 									<div class="second-line" style="font-size: 17px;">
@@ -94,6 +85,10 @@
 			function mvmem_get_gallery_ids() {
 			global $post;
 			
+			// Make sure the post has a gallery in it
+			 	if(!has_shortcode($post->post_content,'gallery')) {
+			 		return $post->post_content;
+			 	}
 			// Retrieve the first gallery in the post
 			 	$gallery = get_post_gallery($post,false);
 		
@@ -102,12 +97,4 @@
 ?>
 
 <?php get_footer(); ?>
-
-<?php
-if(has_shortcode($post->post_content,'gallery')) {
-	for ($i=0; $i<count($mvmem_gallery_array); $i++) {
-		$wpdb->query('UPDATE `mvmemcom_wordpress_4`.`wp_posts` SET `menu_order` = '.$i.' WHERE `wp_posts`.`ID` ='.$mvmem_gallery_array[$i].';');
-	}
-}
-?>
 

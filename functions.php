@@ -1,5 +1,23 @@
 <?php
 
+add_filter( 'the_content', 'mvmem_attendance_filter' ); 
+  // returns the content of $GLOBALS['post']
+  // if the page is called 'debug'
+  function mvmem_attendance_filter($content) {
+    // assuming you have created a page/post entitled 'debug'
+    if ($GLOBALS['post']->post_name == 'anticipated-attendance') {
+      return file_get_contents('wp-content/uploads/reports/Anticipated Attendance.htm');
+    } elseif ($GLOBALS['post']->post_name == 'seating-arrangements-table-assignments') {
+      return file_get_contents('wp-content/uploads/reports/Reunion Seating Arrangements.htm');
+    } else {
+      // otherwise returns the database content
+      return $content;
+    }
+
+    
+  }  
+
+
 add_action( 'wp_login_failed', 'mm_login_failed' ); // hook failed login
 
 function mm_login_failed( $user ) {
@@ -11,7 +29,7 @@ function mm_login_failed( $user ) {
 		// make sure we don't already have a failed login attempt
 		if ( !strstr($referrer, '?login=failed' )) {
 			// Redirect to the login page and append a querystring of login failed
-	    	wp_redirect( $referrer . '?login=failed');
+	    	wp_redirect( $referrer . '&login=failed');
 	    } else {
 	      	wp_redirect( $referrer );
 	    }
@@ -39,7 +57,7 @@ function mm_blank_login( $user ){
   		// make sure we don't already have a failed login attempt
     	if ( !strstr($referrer, '?login=failed') ) {
     		// Redirect to the login page and append a querystring of login failed
-        	wp_redirect( $referrer . '?login=failed' );
+        	wp_redirect( $referrer . '&login=failed' );
       	} else {
         	wp_redirect( $referrer );
       	}
@@ -49,7 +67,7 @@ function mm_blank_login( $user ){
   	}
 }
 
-add_action( 'get_header', 'login_or_die' );
+add_action('get_header', 'login_or_die');
 
 function login_or_die() {
 	get_currentuserinfo();
@@ -67,5 +85,3 @@ function mmm_login_page( $login_url, $redirect ) {
 }
 
 add_filter( 'login_url', 'mmm_login_page', 10, 2 );
-	
-?>

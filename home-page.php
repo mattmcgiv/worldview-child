@@ -7,7 +7,8 @@ Author:  Matt McGivney (http://antym.com)
 
 <?php add_action('wp_head','hook_css_masthead2'); ?>
 <?php function hook_css_masthead2() {
-		$output='<link rel="stylesheet" type="text/css" href="' . get_stylesheet_directory_uri() . '/css/home-right-sidebar.css">';
+		$output='<link rel="stylesheet" type="text/css" href="' . get_stylesheet_directory_uri() . '/css/home-right-sidebar.css">
+		<link rel="stylesheet" type="text/css" href="'. get_stylesheet_directory_uri() . '/style.css">';
 		echo $output;
 	
 	}
@@ -34,15 +35,20 @@ Author:  Matt McGivney (http://antym.com)
 		<div id="masthead2">
 
 					<div class="widgets">
-						<div id="text-6" class="widget widget_text">
-						<br>
-							<h1 class="widgettitle" id="member-activity">Look Who's...</h2>
+						<center>
+							<div id="text-6" class="widget widget_text">
+							<h1 class="widgettitle" id="member-activity" style="text-transform: none;">LOOK WHO's ...</h1>
 								<div id="member-activity-container"> 
 									<?php 
 										getLoginLogsForHomepage();
 									?>
 								</div>
-						</div>
+								&nbsp;
+								<div class="mvem-cal-box">
+									<script src="http://www.calendarwiz.com/calendars/ucfeeder.php?crd=mvmem&amp;theme=Master%20Theme"></script>
+								</div>
+						</div><!--text-6-->
+						</center>
 					</div><!-- end class="widgets" -->
 	
 		</div>
@@ -65,9 +71,10 @@ Author:  Matt McGivney (http://antym.com)
 			
 				echo '<table>
 					<tr>
-					  <th>Been here</th>
-					  <th>Last Visit</th> 
-					</tr>';			
+					  <th class="look-whos-th" >Been here</th>
+					  <th class="look-whos-th">Last Visit</th> 
+					</tr>';	
+
 				foreach ( $result as $value )	{
 					$this_user = get_user_by('login', $value->user_login);
 					$this_dateTime = strtotime($value->time);
@@ -91,8 +98,6 @@ Author:  Matt McGivney (http://antym.com)
 							echo '<td>'. $this_date .'</td>';
 						}
 						
-						//echo '<td>'. date('n/j', $this_date) .'</td>';
-						
 					echo '</tr>';
 				}	
 				echo '</table>';
@@ -101,8 +106,7 @@ Author:  Matt McGivney (http://antym.com)
 			else {
 				echo '<h2>Not Found</h2>';
 			}
-			echo '<br>';
-			echo '<a href="http://mvmem.com/member-activity/">See More</a>';
+			echo '<a href="http://mvmem.com/member-activity/" target="_blank" id="see-more-link">See More</a>';
 	}  //<!-- end getLoginLogsForHomepage -->
 	
 	function doQuery() {
@@ -120,7 +124,7 @@ Author:  Matt McGivney (http://antym.com)
 						GROUP by uid
 					)
 					ORDER BY time DESC
-					LIMIT 30
+					LIMIT 15
 				"
 		);
 		return $memberActivity;
