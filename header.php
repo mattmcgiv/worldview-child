@@ -25,6 +25,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . '/style.css';?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
@@ -71,7 +72,7 @@
 			</div>
 			<?php endif; ?>
 
-			<h1 id="blog-title"><a href="<?php echo esc_url( home_url('/') ); ?>"><?php bloginfo('name'); ?></a></h1>
+			<h1 id="blog-title"><a href="<?php echo esc_url( 'http://mvmem.com/' ); ?>"><?php bloginfo('name'); ?></a></h1>
 			<div class="desc"><?php bloginfo('description'); ?></div>
 
 			
@@ -114,7 +115,7 @@
 	
 		$output="<style>
 		.widgets {width: 225px; margin-left: auto !important; margin-right: auto !important;} 
-		.widgettitle{text-align: left; color: rgba(255, 255, 255, 0.6); font-size: 1em !important;}
+		.widgettitle{text-align: left !important; color: rgba(255, 255, 255, 0.6); font-size: 1em !important;}
 		.textwidget{line-height: 1.5 !important; color: rgba(255, 255, 255, 0.9); font-size: 60% !important; text-align: left !important;}
 		.textwidget a {color: #f9d236 !important;}
 		main a { color: blue !important; text-decoration: underline !important; border-bottom: none !important;}
