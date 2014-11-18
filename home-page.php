@@ -48,7 +48,6 @@ Author:  Matt McGivney (http://antym.com)
 									<script src="http://www.calendarwiz.com/calendars/ucfeeder.php?crd=mvmem&amp;theme=Master%20Theme"></script>
 								</div>
 							</div><!--text-6-->
-
 							<a href="<?php echo get_home_url(null,'/announcements');?>" id="see-more-link">
 								START HERE
 							</a>
@@ -110,7 +109,7 @@ Author:  Matt McGivney (http://antym.com)
 			else {
 				echo '<h2>Not Found</h2>';
 			}
-			echo '<a href="http://mvmem.com/member-activity/" target="_blank" class="see-more-link">See More</a>';
+			echo '<a href="http://mvmem.com/member-activity/" target="_blank" id="see-more-link">See More</a>';
 	}  //<!-- end getLoginLogsForHomepage -->
 	
 	function doQuery() {
