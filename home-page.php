@@ -37,7 +37,7 @@ Author:  Matt McGivney (http://antym.com)
 					<div class="widgets">
 						<center>
 							<div id="text-6" class="widget widget_text">
-							<h1 class="widgettitle" id="member-activity" style="text-transform: none;">LOOK WHO's ...</h1>
+								<h1 class="widgettitle" id="member-activity" style="text-transform: none;">LOOK WHO's ...</h1>
 								<div id="member-activity-container"> 
 									<?php 
 										getLoginLogsForHomepage();
@@ -47,7 +47,11 @@ Author:  Matt McGivney (http://antym.com)
 								<div class="mvem-cal-box">
 									<script src="http://www.calendarwiz.com/calendars/ucfeeder.php?crd=mvmem&amp;theme=Master%20Theme"></script>
 								</div>
-						</div><!--text-6-->
+							</div><!--text-6-->
+
+							<a href="<?php echo get_home_url(null,'/announcements');?>" id="see-more-link">
+								START HERE
+							</a>
 						</center>
 					</div><!-- end class="widgets" -->
 	
@@ -106,7 +110,7 @@ Author:  Matt McGivney (http://antym.com)
 			else {
 				echo '<h2>Not Found</h2>';
 			}
-			echo '<a href="http://mvmem.com/member-activity/" target="_blank" id="see-more-link">See More</a>';
+			echo '<a href="http://mvmem.com/member-activity/" target="_blank" class="see-more-link">See More</a>';
 	}  //<!-- end getLoginLogsForHomepage -->
 	
 	function doQuery() {
