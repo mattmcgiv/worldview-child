@@ -20,3 +20,7 @@ article.post .split-view, article.page .split-view { padding-top: 0px; margin-to
 div#comments.comments-area {
 	margin-left: 0px;
 }
+
+#text-6 {
+	margin-bottom: 20px;
+}
